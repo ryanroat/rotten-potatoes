@@ -1,5 +1,11 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/rotten-potatoes', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 const app = express();
 
