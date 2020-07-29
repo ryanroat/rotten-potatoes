@@ -20,20 +20,25 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // OUR MOCK ARRAY OF PROJECTS
-const reviews = [
-    { title: 'Great Review', movieTitle: 'Batman II' },
-    { title: 'Awesome Movie', movieTitle: 'Titanic' }
-];
+// const reviews = [
+//     { title: 'Great Review', movieTitle: 'Batman II' },
+//     { title: 'Awesome Movie', movieTitle: 'Titanic' }
+// ];
 
 app.get('/', (req, res) => {
-    res.render('reviews-index', { reviews });
+    Review.find()
+        .then(reviews => {
+            res.render('reviews-index', { reviews });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 // route to /reviews eventually /INDEX
-
-app.get('/reviews', (req, res) => {
-    res.render('reviews-index', { reviews });
-});
+// app.get('/reviews', (req, res) => {
+//     res.render('reviews-index', { reviews });
+// });
 
 app.listen(PORT_SERVER, () => {
     console.log(`app server started on port ${PORT_SERVER}.`);
