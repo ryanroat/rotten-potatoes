@@ -7,6 +7,11 @@ mongoose.connect('mongodb://localhost/rotten-potatoes', {
     useUnifiedTopology: true
 });
 
+const Review = mongoose.model('Review', {
+    title: String,
+    movieTitle: String
+});
+
 const app = express();
 
 const PORT_SERVER = 3030;
