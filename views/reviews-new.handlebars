@@ -1,6 +1,31 @@
+{{!-- views / reviews-new --}}
+
 <h1 id="home">Add a New Review</h1>
 
+<form action="/reviews" method="post">
+    <fieldset>
+        <legend>New Review</legend>
+        {{!-- Title --}}
+        <p class="form-input form-input__new-review">
+            <label for="title">Title</label><br />
+            <input class="form-input form-input__new-review--title" type="text" name="title">
+        </p>
+        <p class="form-input form-input__new-review">
+            <label for="movieTitle">Movie Title</label><br />
+            <input type="text" class="form-input form-input__new-review--movie" name="movieTitle">
+        </p>
+    </fieldset>
 
-{{!-- cancel and return to index --}}
-{{!-- TODO: make cancel button work --}}
-<button class="btn btn-cancel" type="button">CANCEL</button>
+    {{!-- submit new review --}}
+    <p>
+        <button type="submit">Save Review</button>
+    </p>
+
+
+    {{!-- cancel and return to index --}}
+    {{!-- TODO: make cancel button work --}}
+
+    <p>
+        <button class="btn btn-cancel" type="button">CANCEL</button>
+    </p>
+</form>
