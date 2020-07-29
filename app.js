@@ -35,6 +35,10 @@ app.get('/', (req, res) => {
         });
 });
 
+app.get('/reviews/new', (req, res) => {
+    res.render('reviews-new', {});
+});
+
 // route to /reviews eventually /INDEX
 // app.get('/reviews', (req, res) => {
 //     res.render('reviews-index', { reviews });
