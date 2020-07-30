@@ -1,5 +1,9 @@
 const express = require('express');
+const Handlebars = require('handlebars');
 const exphbs = require('express-handlebars');
+const {
+    allowInsecurePrototypeAccess
+} = require('@handlebars/allow-prototype-access');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/rotten-potatoes', {
@@ -16,7 +20,13 @@ const app = express();
 
 const PORT_SERVER = 3030;
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine(
+    'handlebars',
+    exphbs({
+        defaultLayout: 'main',
+        handlebars: allowInsecurePrototypeAccess(Handlebars)
+    })
+);
 app.set('view engine', 'handlebars');
 
 // use express built-in 'body parser' middleware
@@ -46,8 +56,14 @@ app.get('/reviews/new', (req, res) => {
 
 // create new review
 app.post('/reviews', (req, res) => {
-    console.log(req.body);
-    // res.render('reviews-new', {});
+    // console.log(req.body);
+    Review.create(req.body)
+        .then(review => {
+            res.redirect('/');
+        })
+        .catch(err => {
+            console.log(err.message);
+        });
 });
 
 // route to /reviews eventually /INDEX
