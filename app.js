@@ -33,12 +33,6 @@ app.set('view engine', 'handlebars');
 // use express built-in 'body parser' middleware
 app.use(express.urlencoded({ extended: true }));
 
-// OUR MOCK ARRAY OF PROJECTS
-// const reviews = [
-//     { title: 'Great Review', movieTitle: 'Batman II' },
-//     { title: 'Awesome Movie', movieTitle: 'Titanic' }
-// ];
-
 // render all reviews on index
 app.get('/', (req, res) => {
     Review.find()
@@ -48,6 +42,11 @@ app.get('/', (req, res) => {
         .catch(err => {
             console.log(err);
         });
+});
+
+// render form to add new review
+app.get('/reviews/new', (req, res) => {
+    res.render('reviews-new', {});
 });
 
 // route to individual review
@@ -61,14 +60,8 @@ app.get('/reviews/:id', (req, res) => {
         });
 });
 
-// render form to add new review
-app.get('/reviews/new', (req, res) => {
-    res.render('reviews-new', {});
-});
-
 // create new review
 app.post('/reviews', (req, res) => {
-    // console.log(req.body);
     Review.create(req.body)
         .then(review => {
             res.redirect('/');
