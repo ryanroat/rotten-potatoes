@@ -13,7 +13,8 @@ mongoose.connect('mongodb://localhost/rotten-potatoes', {
 
 const Review = mongoose.model('Review', {
     title: String,
-    movieTitle: String
+    movieTitle: String,
+    description: String
 });
 
 const app = express();
