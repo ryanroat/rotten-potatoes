@@ -64,7 +64,8 @@ app.get('/reviews/:id', (req, res) => {
 app.post('/reviews', (req, res) => {
     Review.create(req.body)
         .then(review => {
-            res.redirect('/');
+            // redirect to new review after post
+            res.redirect(`/reviews/${review._id}`);
         })
         .catch(err => {
             console.log(err.message);
