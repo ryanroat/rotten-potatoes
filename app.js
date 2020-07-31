@@ -39,7 +39,7 @@ app.use(express.urlencoded({ extended: true }));
 //     { title: 'Awesome Movie', movieTitle: 'Titanic' }
 // ];
 
-// render all reviews
+// render all reviews on index
 app.get('/', (req, res) => {
     Review.find()
         .then(reviews => {
@@ -47,6 +47,17 @@ app.get('/', (req, res) => {
         })
         .catch(err => {
             console.log(err);
+        });
+});
+
+// route to individual review
+app.get('/reviews/:id', (req, res) => {
+    Review.findById(req.params.id)
+        .then(review => {
+            res.render('reviews-show', { review });
+        })
+        .catch(err => {
+            console.log(err.message);
         });
 });
 
