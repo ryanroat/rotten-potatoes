@@ -9,3 +9,9 @@
 <h1>{{ review.title }}</h1>
 <h2>{{ review.movieTitle }}</h2>
 <p>{{ review.description }}</p>
+
+{{!-- button to edit current review --}}
+
+<p>
+    <a href="/reviews/{{review._id}}/edit"><button class="btn btn-cancel" type="button">Edit this review</button></a>
+</p>

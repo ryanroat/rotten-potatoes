@@ -1,4 +1,5 @@
 const express = require('express');
+const methodOverride = require('method-override');
 const Handlebars = require('handlebars');
 const exphbs = require('express-handlebars');
 const {
@@ -32,6 +33,9 @@ app.set('view engine', 'handlebars');
 
 // use express built-in 'body parser' middleware
 app.use(express.urlencoded({ extended: true }));
+
+// override with POST having ?_method=DELETE or ?_method=PUT
+app.use(methodOverride('_method'));
 
 // render all reviews on index
 app.get('/', (req, res) => {
@@ -72,10 +76,19 @@ app.post('/reviews', (req, res) => {
         });
 });
 
-// route to /reviews eventually /INDEX
-// app.get('/reviews', (req, res) => {
-//     res.render('reviews-index', { reviews });
-// });
+// edit review
+app.get('/reviews/:id/edit', (req, res) => {
+    Review.findById(req.params.id, (err, review) => {
+        res.render('reviews-edit', { review });
+    });
+});
+
+// PUT edited review
+app.put('/reviews/:id', (req, res) => {
+    Review.findByIdAndUpdate(req.params.id, req.body).then(review => {
+        res.redirect(`/reviews/${review._id}`);
+    });
+});
 
 app.listen(PORT_SERVER, () => {
     console.log(`app server started on port ${PORT_SERVER}.`);
