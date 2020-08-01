@@ -9,22 +9,7 @@
 <h1 id="home">Add a New Review</h1>
 
 <form action="/reviews" method="post">
-    <fieldset>
-        <legend>New Review</legend>
-        {{!-- Title --}}
-        <p class="form-input form-input__new-review">
-            <label for="title">Title your review</label><br />
-            <input class="form-input form-input__new-review--title" type="text" name="title">
-        </p>
-        <p class="form-input form-input__new-review">
-            <label for="movieTitle">Movie Title</label><br />
-            <input type="text" class="form-input form-input__new-review--movie" name="movieTitle">
-        </p>
-        <p class="form-input form-input__new-reiew">
-            <label for="description">Enter your review</label><br />
-            <textarea class="form-input form-input__new-review--desc" name="description" rows="10"></textarea>
-        </p>
-    </fieldset>
+    {{> reviews-form}}
 
     {{!-- submit new review --}}
     <p>

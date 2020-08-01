@@ -6,28 +6,10 @@
     <a href="/"><button class="btn btn-cancel" type="button">HOME</button></a>
 </p>
 
+<h1 id="home">Edit this Review</h1>
+
 <form action="/reviews/{{review._id}}?_method=PUT" method="post">
-    <fieldset>
-        <legend>Edit Review</legend>
-
-        {{!-- review title --}}
-        <p>
-            <label for="review-title">Title</label><br />
-            <input id="review-title" type="text" name="title" value="{{review.title}}" />
-        </p>
-
-        {{!-- movie title --}}
-        <p>
-            <label for="movie-title">Title</label><br />
-            <input id="movie-title" type="text" name="movieTitle" value="{{review.movieTitle}}" />
-        </p>
-
-        {{!-- review description --}}
-        <p>
-            <label for="review-description">Review Details</label><br />
-            <textarea name="description" id="review-description" cols="30" rows="10">{{review.description}}</textarea>
-        </p>
-    </fieldset>
+    {{> reviews-form}}
 
     {{!-- submit edited review --}}
     <p>
