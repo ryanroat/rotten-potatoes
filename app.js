@@ -90,6 +90,16 @@ app.put('/reviews/:id', (req, res) => {
     });
 });
 
+app.delete('/reviews/:id', (req, res) => {
+    Review.findByIdAndRemove(req.params.id)
+        .then(review => {
+            res.redirect('/');
+        })
+        .catch(err => {
+            console.log(err.message);
+        });
+});
+
 app.listen(PORT_SERVER, () => {
     console.log(`app server started on port ${PORT_SERVER}.`);
 });
