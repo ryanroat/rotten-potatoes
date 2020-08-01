@@ -15,3 +15,11 @@
 <p>
     <a href="/reviews/{{review._id}}/edit"><button class="btn btn-cancel" type="button">Edit this review</button></a>
 </p>
+
+{{!-- button to delete the current review --}}
+
+<p>
+<form action="/reviews/{{review._id}}?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+</form>
+</p>
