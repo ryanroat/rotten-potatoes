@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 
 // render form to add new review
 app.get('/reviews/new', (req, res) => {
-    res.render('reviews-new', {});
+    res.render('reviews-new', { title: `New Review` });
 });
 
 // route to individual review
@@ -79,7 +79,7 @@ app.post('/reviews', (req, res) => {
 // edit review
 app.get('/reviews/:id/edit', (req, res) => {
     Review.findById(req.params.id, (err, review) => {
-        res.render('reviews-edit', { review });
+        res.render('reviews-edit', { review, title: `Edit Review` });
     });
 });
 
