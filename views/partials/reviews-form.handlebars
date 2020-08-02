@@ -6,18 +6,20 @@
     {{!-- review title --}}
     <p class="form-input form-input__new-review">
         <label for="title">Title your review</label><br />
-        <input class="form-input form-input__new-review--title" type="text" name="title">
+        <input class="form-input form-input__new-review--title" type="text" name="title" value="{{review.title}}"">
     </p>
 
     {{!-- movie title --}}
-    <p class="form-input form-input__new-review">
+    <p class=" form-input form-input__new-review">
         <label for="movieTitle">Movie Title</label><br />
-        <input type="text" class="form-input form-input__new-review--movie" name="movieTitle">
+        <input type="text" class="form-input form-input__new-review--movie" name="movieTitle"
+            value="{{review.movieTitle}}">
     </p>
 
     {{!-- review description --}}
     <p class="form-input form-input__new-reiew">
         <label for="description">Enter your review</label><br />
-        <textarea class="form-input form-input__new-review--desc" name="description" rows="10"></textarea>
+        <textarea class="form-input form-input__new-review--desc" name="description"
+            rows="10">{{review.description}}</textarea>
     </p>
 </fieldset>
