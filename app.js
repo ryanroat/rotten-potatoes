@@ -20,6 +20,8 @@ const Review = mongoose.model('Review', {
 
 const app = express();
 
+const reviews = require('./controllers/reviews')(app, Review);
+
 const PORT_SERVER = 3030;
 
 app.engine(
@@ -36,17 +38,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // override with POST having ?_method=DELETE or ?_method=PUT
 app.use(methodOverride('_method'));
-
-// render all reviews on index
-app.get('/', (req, res) => {
-    Review.find()
-        .then(reviews => {
-            res.render('reviews-index', { reviews });
-        })
-        .catch(err => {
-            console.log(err);
-        });
-});
 
 // render form to add new review
 app.get('/reviews/new', (req, res) => {
