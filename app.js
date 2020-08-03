@@ -32,7 +32,7 @@ app.engine(
     })
 );
 app.set('view engine', 'handlebars');
-
+mongoose.set('useFindAndModify', false);
 // use express built-in 'body parser' middleware
 app.use(express.urlencoded({ extended: true }));
 
