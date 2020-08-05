@@ -12,15 +12,15 @@ mongoose.connect('mongodb://localhost/rotten-potatoes', {
     useUnifiedTopology: true
 });
 
-const Review = mongoose.model('Review', {
-    title: String,
-    movieTitle: String,
-    description: String
-});
+// const Review = mongoose.model('Review', {
+//     title: String,
+//     movieTitle: String,
+//     description: String
+// });
 
 const app = express();
 
-const reviews = require('./controllers/reviews')(app, Review);
+const reviews = require('./controllers/reviews')(app);
 
 const PORT_SERVER = 3030;
 
@@ -42,3 +42,5 @@ app.use(methodOverride('_method'));
 app.listen(PORT_SERVER, () => {
     console.log(`app server started on port ${PORT_SERVER}.`);
 });
+
+module.exports = app;
