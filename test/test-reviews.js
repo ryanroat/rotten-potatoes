@@ -20,6 +20,15 @@ describe('Reviews', () => {
     });
 
     // TEST NEW
+    it('should display new form on /reviews/new GET', done => {
+        chai.request(server)
+            .get(`/reviews/new`)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.should.be.html;
+                done();
+            });
+    });
     // TEST CREATE
     // TEST SHOW
     // TEST EDIT
