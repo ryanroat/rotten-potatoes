@@ -35,14 +35,16 @@ describe('Reviews', () => {
                 done();
             });
     });
+
     // TEST CREATE
+
     // TEST SHOW
     it('should show a SINGLE review on /reviews/<id> GET', done => {
         // eslint-disable-next-line prefer-const
         let review = new Review(sampleReview);
         review.save((err, data) => {
             chai.request(server)
-                .get(`reviews/${data._id}`)
+                .get(`/reviews/${data._id}`)
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.should.be.html;
@@ -50,6 +52,7 @@ describe('Reviews', () => {
                 });
         });
     });
+
     // TEST EDIT
     // TEST UPDATE
     // TEST DELETE
