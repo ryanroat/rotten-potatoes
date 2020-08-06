@@ -56,4 +56,26 @@ describe('Reviews', () => {
     // TEST EDIT
     // TEST UPDATE
     // TEST DELETE
+
+    // CLEAN UP
+    // after(() => {
+    //     Review.deleteMany({ title: 'Super Sweet Review' }).exec(
+    //         (err, reviews) => {
+    //             console.log(reviews);
+    //             reviews.remove();
+    //         }
+    //     );
+    // });
+});
+
+// CLEAN UP
+describe('Reviews', () => {
+    after(() => {
+        Review.deleteMany({ title: 'Super Sweet Review' }).exec(
+            (err, reviews) => {
+                console.log(review);
+                reviews.remove();
+            }
+        );
+    });
 });
