@@ -37,6 +37,16 @@ describe('Reviews', () => {
     });
 
     // TEST CREATE
+    it('should create a SINGLE review on /reviews POST', done => {
+        chai.request(server)
+            .post('/reviews')
+            .send(sampleReview)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.should.be.html;
+                done();
+            });
+    });
 
     // TEST SHOW
     it('should show a SINGLE review on /reviews/<id> GET', done => {
