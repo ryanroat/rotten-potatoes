@@ -54,6 +54,18 @@ describe('Reviews', () => {
     });
 
     // TEST EDIT
+    it('should edit a SINGLE review on /reviews/<id>/edit GET', done => {
+        const review = new Review(sampleReview);
+        review.save((err, data) => {
+            chai.request(server)
+                .get(`/reviews/${data._id}/edit`)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.should.be.html;
+                    done();
+                });
+        });
+    });
     // TEST UPDATE
     // TEST DELETE
 
