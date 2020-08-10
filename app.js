@@ -21,6 +21,7 @@ mongoose.connect('mongodb://localhost/rotten-potatoes', {
 const app = express();
 
 const reviews = require('./controllers/reviews')(app);
+const comments = require('./controllers/comments')(app);
 
 const PORT_SERVER = 3030;
 
