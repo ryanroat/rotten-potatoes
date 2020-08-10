@@ -3,6 +3,7 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const Review = require('../models/review');
+const Comment = require('../models/comment');
 
 module.exports = function(app) {
     // use express built-in 'body parser' middleware
