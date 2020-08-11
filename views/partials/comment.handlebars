@@ -2,3 +2,9 @@
 
 <h4>{{this.title}}</h4>
 <p>{{this.content}}</p>
+{{!-- link to DELETE this comment --}}
+<p>
+<form action="/reviews/comments/{{this._id}}?_method=DELETE" method="post">
+    <button type="submit">Delete</button>
+</form>
+</p>
