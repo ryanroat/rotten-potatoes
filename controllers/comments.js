@@ -23,4 +23,15 @@ module.exports = app => {
                 console.log(err.message);
             });
     });
+
+    // DELETE comment
+    app.delete('/reviews/comments/:id', (req, res) => {
+        Comment.findByIdAndRemove(req.params.id)
+            .then(comment => {
+                res.redirect(`/reviews/${comment.reviewId}`);
+            })
+            .catch(err => {
+                console.log(err.message);
+            });
+    });
 };
