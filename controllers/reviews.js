@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 const Review = require('../models/review');
 // const Comment = require('../models/comment');
 
-module.exports = function(app) {
+module.exports = app => {
     // use express built-in 'body parser' middleware
     app.use(express.urlencoded({ extended: true }));
     // override with POST having ?_method=DELETE or ?_method=PUT

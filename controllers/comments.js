@@ -17,7 +17,7 @@ module.exports = app => {
         Comment.create(req.body)
             .then(comment => {
                 console.log(comment);
-                res.redirect(`/reviews/${comment.ReviewId}`);
+                res.redirect(`/reviews/${comment.reviewId}`);
             })
             .catch(err => {
                 console.log(err.message);
