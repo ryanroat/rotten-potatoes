@@ -24,6 +24,15 @@
 </form>
 </p>
 
-{{!-- comment form --}}
+{{!-- new comment input form --}}
 
 {{> comment-form}}
+
+<br />
+<br />
+
+{{!-- display any existing comments for this review id --}}
+
+{{#each comments}}
+{{> comment}}
+{{/each}}

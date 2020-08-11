@@ -4,7 +4,7 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const Review = require('../models/review');
-// const Comment = require('../models/comment');
+const Comment = require('../models/comment');
 
 module.exports = app => {
     // use express built-in 'body parser' middleware
@@ -30,9 +30,14 @@ module.exports = app => {
 
     // route to individual review
     app.get('/reviews/:id', (req, res) => {
+        // find review by id
         Review.findById(req.params.id)
             .then(review => {
-                res.render('reviews-show', { review });
+                // find (any) comments for this review id
+                Comment.find({ reviewId: req.params.id }).then(comments => {
+                    // display review and any comments
+                    res.render('reviews-show', { review, comments });
+                });
             })
             .catch(err => {
                 console.log(err.message);
