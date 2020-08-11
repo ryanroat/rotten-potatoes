@@ -8,4 +8,6 @@ const Review = mongoose.model('Review', {
     movieTitle: String
 });
 
+const Comment = require('../models/comment');
+
 module.exports = Review;

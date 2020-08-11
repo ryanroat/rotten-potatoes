@@ -12,12 +12,6 @@ mongoose.connect('mongodb://localhost/rotten-potatoes', {
     useUnifiedTopology: true
 });
 
-// const Review = mongoose.model('Review', {
-//     title: String,
-//     movieTitle: String,
-//     description: String
-// });
-
 const app = express();
 
 const reviews = require('./controllers/reviews')(app);
