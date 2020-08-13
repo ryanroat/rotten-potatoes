@@ -12,6 +12,8 @@
 {{#each reviews}}
 
 <h3><a href="/reviews/{{ this._id }}">{{ this.title }}</a></h3>
+<small>posted on {{dateFormat this.createdAt format="MMMM Do YYYY"}}</small><br/>
+<br/>
 <small>{{ this.movieTitle }}</small>
 <p>{{ this.description }}</p>
 
