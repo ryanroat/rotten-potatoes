@@ -3,6 +3,7 @@
 
 const express = require('express');
 const methodOverride = require('method-override');
+const moment = require('moment');
 const Review = require('../models/review');
 const Comment = require('../models/comment');
 
@@ -28,11 +29,15 @@ module.exports = app => {
         res.render('reviews-new', { title: `New Review` });
     });
 
-    // route to individual review
+    // route to SHOW individual review
     app.get('/reviews/:id', (req, res) => {
         // find review by id
         Review.findById(req.params.id)
             .then(review => {
+                // process timestamp into display format
+                let { createdAt } = review;
+                createdAt = moment(createdAt).format('MMMM Do YYYY, h:mm:ss a');
+                review.createdAtFormatted = createdAt;
                 // find (any) comments for this review id
                 Comment.find({ reviewId: req.params.id }).then(comments => {
                     // display review and any comments
