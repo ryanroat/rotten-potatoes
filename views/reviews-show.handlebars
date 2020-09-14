@@ -7,7 +7,7 @@
 </p>
 
 <h1>{{ review.title }}</h1>
-<small>Created: {{review.createdAtFormatted}}</small>
+<small>Created: {{dateFormat review.createdAt format="MMMM Do YYYY, h:mm:ss a"}}</small>
 <h2>{{ review.movieTitle }}</h2>
 <p>{{ review.description }}</p>
 
